@@ -1,0 +1,13 @@
+{% extends 'navbar.html' %}
+{% block body %}
+    <div class="container center">
+        <h1>2016 AMC Admin</h1>
+        <form action="/append" method="post">
+            <input name="username" type="text" placeholder="Username">
+            <input name="amc10" type="text" placeholder="AMC10 Score">
+            <input name="amc12" type="text" placeholder="AMC12 Score">
+            <input name="aime" type="text" placeholder="AIME Score">
+            <button class="btn-large waves-effect waves-light orange" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

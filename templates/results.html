@@ -1,0 +1,72 @@
+{% extends 'navbar.html' %}
+{% block body %}
+    <div class="container center">
+        <h1>2016 AMC Results</h1>
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#amc10" class="orange-text">AMC 10</a></li>
+                <li class="tab col s3"><a class="active orange-text" href="#amc12">AMC 12</a></li>
+                <div class="indicator blue" style="z-index:1"></div>
+            </ul>
+        </div>
+        <div id="amc10" class="col s12">
+            <table class="sortable">
+                <thead>
+                    <tr>
+                        <th data-field="id">AoPS Username</th>
+                        <th data-field="name">AMC Score</th>
+                        <th data-field="aime">AIME Score</th>
+                        <th data-field="index" id="index10">Index</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in shelf %}
+                        {% if not shelf[entry].get('amc10') == None %}
+                            <tr>
+                                <td>{{ entry }}</td>
+                                <td>{{ shelf[entry].get('amc10') }}</td>
+                                <td>{{ shelf[entry].get('aime') }}</td>
+                                <td>{{ shelf[entry].get('index10') }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="amc12" class="col s12">
+            <table class="sortable">
+                <thead>
+                    <tr>
+                        <th data-field="id">AoPS Username</th>
+                        <th data-field="name">AMC Score</th>
+                        <th data-field="aime">AIME Score</th>
+                        <th data-field="index" id="index12">Index</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in shelf %}
+                        {% if not shelf[entry].get('amc12') == None %}
+                            <tr>
+                                <td>{{ entry }}</td>
+                                <td>{{ shelf[entry].get('amc12') }}</td>
+                                <td>{{ shelf[entry].get('aime') }}</td>
+                                <td>{{ shelf[entry].get('index12') }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="http://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <script>
+        $(window).load(function() {
+            sorttable.innerSortFunction.apply(document.getElementById('index12'),[]);
+            sorttable.innerSortFunction.apply(document.getElementById('index12'),[]);
+            sorttable.innerSortFunction.apply(document.getElementById('index10'),[]);
+            sorttable.innerSortFunction.apply(document.getElementById('index10'),[]);
+        });
+    </script>
+{% endblock %}

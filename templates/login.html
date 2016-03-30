@@ -1,0 +1,10 @@
+{% extends 'navbar.html' %}
+{% block body %}
+    <div class="container center" style="padding-top:100px">
+        <form action="/admin" method="post">
+            <input name="user" type="text" placeholder="Username" />
+            <input name="pass" type="password" placeholder="Password" />
+            <button class="btn-large waves-effect waves-light orange" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
